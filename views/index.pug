@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h1 To do List
+    
+    form(method="POST", action="todo/add")
+        input(type = "text",placeholder="Add New Todo", name="task")
+        button.btn.btn-primary(type="submit") Submit  
+    ul
+    
+        each data2 in data 
+            li= data2
+    
+                span  &nbsp; 
+                    a(href="/todo/delete/"+index+"") Delete
+                    
+    
