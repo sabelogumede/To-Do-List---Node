@@ -1,17 +1,93 @@
-extends layout
+doctype html
+html
+    head
+        //- link(rel="stylesheet", href="/css/style.css")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css")
+        style.
+            body {
+                font-size:100%;
+                background: #f2f2f2;
+                font-family: Verdara, Helvetica, Sans-Serif;
+            }
+            #container{
+                margin: auto;
+                width: 40%;
+                background: #ffffff;
+                padding: 10px;
+            }
+            #topHead {
+                background: #d442f4;
+                margin-bottom: 20px;
+            }
+            h1 {
+                font-size: 2.2em;
+                padding: 20px;
+                color: #ffffff;
+                margin: auto;
+                width: auto-fit;
+              }
+            form {
+                background: #ffffff;
+                padding: 0;
 
-block content
-    h1 To do List
+            }
+            form input {
+                font-size: 1.3em;
+                background: #f2f2f2;
+                border: 0;
+                padding: 20px;
+                width: 72%;
+            }
+            form button {
+                font-size: 1.3em;
+                padding: 20px;
+                width: 22%;
+                background: #d442f4;
+                color: #ffffff;
+                border: 0;
+            }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                }
+            li {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                transition: 0.3s;
+                width: 94%;
+                padding: 20px;
+                margin-top: 15px;
+                font-size: 1.3em;
+                color: #575c5e;
+                transition: 0.3s;
+             }
+             li:hover {
+                 box-shadow: 0 6px 10px 0 rgba(0,0,0,0.4);
+                 transition: 0.6s;
+             }
+            span {
+                float:right;
+             }
+                
+            
+    body
+        
+     div(id="container")
+        div(id="topHead")
+            h1 Task List
+        form(method="POST", action="todo/add")
+            input(type = "text",placeholder="Add New Task", name="task")
+            button.btn.btn-primary(type="submit")   
+                  i.fas.fa-plus(aria-hidden='true')  New
+                  
+        ul
+            each data2 in data 
+                li= data2
+        
+                    span  &nbsp; 
+                        a(href="/todo/delete/"+index+"") 
+                         i.far.fa-trash-alt(aria-hidden='true') 
+                        
     
-    form(method="POST", action="todo/add")
-        input(type = "text",placeholder="Add New Todo", name="task")
-        button.btn.btn-primary(type="submit") Submit  
-    ul
-    
-        each data2 in data 
-            li= data2
-    
-                span  &nbsp; 
-                    a(href="/todo/delete/"+index+"") Delete
-                    
+
     
